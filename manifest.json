@@ -10,7 +10,10 @@
         "matches": ["https://github.com/*"],
         "js": [
           "vendor/jquery-3.1.1.min.js",
-          "content.js"
+          "js/content.js"
+        ],
+        "css": [
+          "css/kukkoro.css"
         ]
       }
     ],
