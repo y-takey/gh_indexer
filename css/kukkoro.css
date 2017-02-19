@@ -19,3 +19,9 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+.kukkoro-close-icon {
+  color: #BBBBBB;
+  float: right !important;
+  font-weight: bold;
+}

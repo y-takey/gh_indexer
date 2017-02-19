@@ -9,8 +9,11 @@ const INDENTS = { h1: 0, h2: 1, h3: 2, h4: 3 };
 const INDENT_SIZE = 12;
 let sidebar = null;
 
-const renderSidebar = ()=> {
+const removeSidebar = ()=> {
   if (sidebar) sidebar.remove();
+}
+const renderSidebar = ()=> {
+  removeSidebar();
   if ($(".markdown-body").length === 0) return;
 
   const contents = $("h1,h2,h3,h4", ".markdown-body").map((i, el)=>{
@@ -24,6 +27,8 @@ const renderSidebar = ()=> {
   });
   sidebar = $("<nav></nav>", { class: "kukkoro-sidebar" });
   $("body").append(sidebar);
+  let closeIcon = $("<span>", { text: "x", class: "kukkoro-close-icon" }).on("click", removeSidebar);
+  sidebar.append(closeIcon);
   sidebar.append(contents.toArray());
 }
 
