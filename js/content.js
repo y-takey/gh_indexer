@@ -18,17 +18,24 @@ const removeSidebar = () => {
   sidebar = null;
 };
 
+const closeIcon = () => {
+  const icon = $("<span>", { text: "x" });
+  return $("<div>", { html: icon, class: "kukkoro-close-icon" }).on("click", removeSidebar);
+};
+
+const generateSidebar = () => {
+  sidebar = $("<nav></nav>", { class: "kukkoro-sidebar" });
+  $("body").append(sidebar);
+  sidebar.append(closeIcon());
+};
+
 const renderSidebar = () => {
   let contents;
   let container;
 
   removeSidebar();
-  if (!sidebar) {
-    sidebar = $("<nav></nav>", { class: "kukkoro-sidebar" });
-    $("body").append(sidebar);
-    let closeIcon = $("<span>", { text: "x", class: "kukkoro-close-icon" }).on("click", removeSidebar);
-    sidebar.append(closeIcon);
-  }
+  if (!sidebar) generateSidebar();
+
   container = $(".markdown-body");
   if (container.length > 0) {
     contents = createReadmeIndex(container, sidebar);
