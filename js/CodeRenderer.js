@@ -5,18 +5,20 @@ const BLANK_TEXT = $("<span>", {
 
 const generaetItem = () => {
   let $lineNumber = $(location.hash);
-  let text = $lineNumber.parent().find(".js-file-line").text().trim()
+  let text = $lineNumber.parent().find(".js-file-line").text().trim();
   return $("<a>", {
     class: "kukkoro-item",
     text: `${$lineNumber.data("lineNumber")}: ${text}`,
     href: location.hash
   });
-}
+};
 
 const createCodeIndex = ($container, sidebar) => {
+  const container = $("<div>");
   $(window).on("hashchange", () => {
     BLANK_TEXT.remove();
-    sidebar.prepend(generaetItem());
-  })
-  return [BLANK_TEXT];
-}
+    container.prepend(generaetItem());
+  });
+  container.append(BLANK_TEXT);
+  return container;
+};
