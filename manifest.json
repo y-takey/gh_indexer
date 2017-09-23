@@ -1,25 +1,18 @@
 {
-    "manifest_version": 2,
-    "name":        "kukkoro",
-    "description": "A chrome extension which index github's README",
-    "version":     "0.0.1",
-    "permissions": ["tabs", "activeTab"],
-    "content_scripts": [
-      {
-        "run_at": "document_end",
-        "matches": ["https://github.com/*"],
-        "js": [
-          "vendor/jquery-3.1.1.min.js",
-          "js/ReadmeRenderer.js",
-          "js/CodeRenderer.js",
-          "js/content.js"
-        ],
-        "css": [
-          "css/kukkoro.css"
-        ]
-      }
-    ],
-    "background": {
-        "scripts": ["dev/hot-reload.js", "dev/inject-script.js"]
+  "manifest_version": 2,
+  "name": "kukkoro",
+  "description": "A chrome extension which index github's README",
+  "version": "0.0.1",
+  "permissions": ["tabs", "activeTab"],
+  "content_scripts": [
+    {
+      "run_at": "document_end",
+      "matches": ["https://github.com/*"],
+      "js": ["vendor/jquery-3.1.1.min.js", "js/ReadmeRenderer.js", "js/CodeRenderer.js", "js/content.js"],
+      "css": ["css/kukkoro.css"]
     }
+  ],
+  "background": {
+    "scripts": ["dev/hot-reload.js", "dev/inject-script.js"]
+  }
 }
