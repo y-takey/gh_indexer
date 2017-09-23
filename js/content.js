@@ -1,6 +1,3 @@
-// const INDENTS = { h1: 0, h2: 1, h3: 2, h4: 3 };
-// const INDENT_SIZE = 12;
-const WAIT_TIME = 2000;
 //////////////////////////////////////////////
 //// Inject jquery lib to document for debug
 //////////////////////////////////////////////
@@ -11,11 +8,16 @@ var head = document.getElementsByTagName("head")[0];
 head.appendChild(script);
 //////////////////////////////////////////////
 
+const WAIT_TIME = 0;
 let sidebar = null;
 
 const removeSidebar = () => {
-  if (sidebar) sidebar.remove();
-}
+  if (!sidebar) return;
+
+  sidebar.remove();
+  sidebar = null;
+};
+
 const renderSidebar = () => {
   let contents;
   let container;
@@ -40,14 +42,14 @@ const renderSidebar = () => {
   }
 
   sidebar.append(contents);
-}
+};
 
 renderSidebar();
 
 let renderedPath = location.pathname;
-$(window).on("transitionend", ()=> {
+$('div[role="main"]').on("DOMSubtreeModified", () => {
   if (renderedPath === location.pathname) return;
 
-  setTimeout(renderSidebar, WAIT_TIME)
+  setTimeout(renderSidebar, WAIT_TIME);
   renderedPath = location.pathname;
 });
