@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "kukkoro",
   "description": "A chrome extension which index github's README",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "permissions": ["tabs", "activeTab"],
   "content_scripts": [
     {
